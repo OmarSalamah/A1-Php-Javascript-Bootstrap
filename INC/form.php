@@ -5,31 +5,42 @@ $firstName = mysqli_real_escape_string($conn ,$_POST['firstName']);
 $lastName =  mysqli_real_escape_string($conn ,$_POST['lastName']);
 $email =    mysqli_real_escape_string($conn ,$_POST['email']);
 
+
+$errors = [
+  'firstNameError' => '',
+  'lastNameError' =>'',
+  'emailError' =>'',
+];
+
+
+
+
 if(isset($_POST['submit'])){
  $sql = "INSERT INTO users(firstName,lastName,email)
     VALUES ('$firstName','$lastName', '$email')";
 
       if(empty($firstName)){
+          $errors['firstNameError'] = 'First name is empty';
 
-        echo 'First name is empty';
+         
+
+      }
+
+      
+       if(empty($lastName)){
+
+        $errors['lastNameError'] = 'Last name is empty';
 
       }
       
       
-      elseif(empty($lastName)){
+       if(empty($email)){
 
-        echo 'last name is empty';
-
-      }
-      
-      
-      elseif(empty($email)){
-
-        echo 'email  is empty';
+        $errors['emailError'] = 'email is empty';
 
       }
       elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-          echo 'enter valid email';
+        $errors['emailError'] = 'emai is wrong';
       }
 
 
