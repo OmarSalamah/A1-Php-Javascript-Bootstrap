@@ -7,16 +7,10 @@
  include './INC/db.php';
  include './INC/form.php';
 
- $sql = 'SELECT * FROM users';
-
- $result = mysqli_query($conn,$sql);
+include './INC/select.php';
+include './INC/db_close.php';
   
-$users = mysqli_fetch_all($result , MYSQLI_ASSOC);
-
-  
-mysqli_free_result($result);
-mysqli_close($conn);
-
+ 
  
 
 ?>
@@ -35,7 +29,7 @@ mysqli_close($conn);
 
  <div class="container">
 
-<!--
+ 
  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
       <h1 class="display-4 fw-normal">دورة التداول</h1>
@@ -55,7 +49,7 @@ mysqli_close($conn);
   <li class="list-group-item">المؤشرات</li>
    
 </ul>
--->
+ 
 
 <form class ="mt-5"  action="index.php" method ="POST">
   <h3>    الرجاء ادخل معلوماتك </h3>
@@ -99,11 +93,11 @@ mysqli_close($conn);
 
     
  
-<!--
+ 
 <?php foreach($users as $user): ?> 
    <h1>  <?php echo htmlspecialchars( $user['firstName']) .' '. htmlspecialchars( $user ['lastName']) .' '. htmlspecialchars( $user ['email'])  ;?> </h1> ;
   <?php endforeach; ?>
--->
+
  
   <script src=" ./js/bootstrap.bundle.min.js"  ></script>
 <script src="./JS/script.js"></script>
