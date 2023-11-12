@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
 
 
                  if(mysqli_query($conn, $sql)){
-                   header('Location: index.php');
+                   header('Location: ' .  $_SERVER ['PHP_SELF']);
                    }else{
   
                      echo 'fail :' .mysqli_connect_error($conn);

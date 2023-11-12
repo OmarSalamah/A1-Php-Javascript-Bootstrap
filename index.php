@@ -15,33 +15,27 @@ include './INC/db_close.php';
 
 ?>
 
- <!DOCTYPE html>
- <html lang="en"   dir= "rtl">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=" ./css/bootstrap.rtl.min.css">
-   <link rel="stylesheet" href="./CSS/style.css">
-    <title>Document</title>
- </head>
- <body>
+ <?php  include_once './parts/header.php';     ?>
   
 
- <div class="container">
+ 
 
  
  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <img src="IMAGES/x.jpg" alt="">
       <h1 class="display-4 fw-normal">دورة التداول</h1>
       <p class="lead fw-normal"> متبقي فقط اربعة مقاعد </p>
-      <p class="lead fw-normal"> : للتسجيل  </p>
+      <p class="lead fw-normal">الوقت المتبقي للتسجيل : </p>
+      <h3 id="countdown"></h3>
+      <!--<p class="lead fw-normal">    </p>-->
       <a class="btn btn-outline-secondary" href="#">Coming soon</a>
     </div>
-     
+</div>
 
 
 
-
+ 
     <ul class="list-group list-group-flush">
   <li class="list-group-item"> دورة عن الاساسيات في التداول من الصفر الى الاحتراف</li>
   <li class="list-group-item">الاساسيات</li>
@@ -50,27 +44,30 @@ include './INC/db_close.php';
    
 </ul>
  
+ 
+<div class="position-relative   text-center ">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
 
-<form class ="mt-5"  action="index.php" method ="POST">
+<form    action=" <?php $_SERVER ['PHP_SELF'] ?>" method ="POST">
   <h3>    الرجاء ادخل معلوماتك </h3>
 
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">First Name</label>
-    <input type="text"  name="firstName"class="form-control" id="exampleInputEmail1" value ="<?php echo $firstName  ?>"aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text error"> <?php echo $errors['firstNameError'] ?> </div>
+    <label for="firstName" class="form-label">First Name</label>
+    <input type="text"  name="firstName" id="firstName" class="form-control"  value ="<?php echo $firstName  ?>" >
+    <div   class="form-text error"> <?php echo $errors['firstNameError'] ?> </div>
   </div>
  
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Last name</label>
-    <input type="text"  name="lastName"class="form-control" id="exampleInputEmail1"value ="<?php echo $lastName  ?>" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text error"><?php echo $errors['lastNameError'] ?></div>
+    <label for="lastName" class="form-label">Last name</label>
+    <input type="text"  name="lastName"id="lastName"class="form-control" value ="<?php echo $lastName  ?>" >
+    <div   class="form-text error"><?php echo $errors['lastNameError'] ?></div>
   </div>
 
 
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1" value ="<?php echo $email  ?>" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text error"><?php echo $errors['emailError'] ?></div>
+    <label for="email" class="form-label">Email address</label>
+    <input type="text" name="email" id="email" class="form-control"  value ="<?php echo $email  ?>"  >
+    <div   class="form-text error"><?php echo $errors['emailError'] ?></div>
   </div>
 
 
@@ -80,18 +77,10 @@ include './INC/db_close.php';
      
   <button type="submit" name ="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
-
- 
+</div>
 </div>
 
 
-
-  
-
-
-    
  
  
 <?php foreach($users as $user): ?> 
@@ -99,10 +88,4 @@ include './INC/db_close.php';
   <?php endforeach; ?>
 
  
-  <script src=" ./js/bootstrap.bundle.min.js"  ></script>
-<script src="./JS/script.js"></script>
- 
- </body>
- </html>
-
- 
+ <?php  include_once './parts/footer.php'; ?>  ?>
